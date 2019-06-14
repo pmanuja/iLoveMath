@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 import Form from './components/Form.js'
+import Sheet from './components/Sheet.js'
 
 class App extends Component {
 state = {
-    data: null
+    data:[],
+    operation : ""
   };
 
 /*
@@ -27,12 +29,57 @@ componentDidMount() {
 }
 
 */
+generateRandomNumbersArray(min, max, count){
+  console.log(min , max);
+let randomArr = [];
+  for(let i = 0; i < count; i++){
+    let num = Math.floor(Math.random() * (max - min + 1)) + min;
+    randomArr.push(num);
+  }
+  return randomArr;
+}
+
+createSheet = (params) => {
+  console.log("create new sheet using" , params);
+  //if level1 set min = 0 to max =10, generate randomNumbers
+  //if level2 set min = 0 to max = 20
+  //if level 3 min = 100 to max = 1000
+  let min, max = 0;
+  let count = parseInt(params.noOfQuestions);
+
+  if(params.level === '1'){
+    console.log("am i here?");
+    min = 0;
+    max = 10;
+  }
+  else if(params.level === '2'){
+    min = 0;
+    max = 20;
+  }
+  else if(params.level === '3'){
+    min = 100;
+    max = 1000;
+  }
+  let arr1 = this.generateRandomNumbersArray(min, max, count);
+  let arr2 = this.generateRandomNumbersArray(min, max, count);
+  let arr3 = arr1.map((ele, i ) => {
+    return [ele, arr2[i]]
+  })
+
+  this.setState({
+    data : arr3,
+    operation : params.operation
+  });
+  console.log(arr3[1]);
+}
 
 render() {
   return (
     <div className="App">
     <h1>Math Sheet Generator </h1>
-    <Form/>
+    <Form createSheet = {this.createSheet} />
+    <Sheet data = {this.state.data} operation = {this.state.operation}/>
+
     </div>
   );
 }
