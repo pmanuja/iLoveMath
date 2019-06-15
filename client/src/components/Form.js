@@ -4,9 +4,9 @@ class Form extends Component {
   constructor(props){
     super(props);
     this.state = {
-      noOfQuestions : 0,
-      level:"",
-      operation:""
+      noOfQuestions : 12,
+      level:"1",
+      operation:"+"
     }
   }
 
@@ -28,9 +28,9 @@ handleSubmit = (e) =>{
 clearform = () =>
 {
   this.setState({
-    noOfQuestions : 0,
-    level:"",
-    operation:""
+    noOfQuestions : 12,
+    level:"1",
+    operation:"+"
   });
 }
 
@@ -41,7 +41,7 @@ render(){
         <div className="form-div">
           <label htmlFor="operation">Select Operation</label>
           <br/>
-          <select name="operation" onChange={this.handleInputChange}>
+          <select name="operation" value = {this.state.operation} onChange={this.handleInputChange}>
             <option value="+">+</option>
             <option value="-">-</option>
             <option value="*">*</option>
@@ -52,7 +52,7 @@ render(){
       <div className="form-div">
         <label htmlFor="level">Select level</label>
         <br/>
-        <select name="level" onChange={this.handleInputChange}>
+        <select name="level" value = {this.state.level} onChange={this.handleInputChange}>
           <option value="1" >level 1</option>
           <option value="2">level 2</option>
           <option value="3">level 3</option>
@@ -62,7 +62,7 @@ render(){
       <div className="form-div">
         <label htmlFor="noOfQuestions">Number of questions</label>
         <br/>
-        <select name="noOfQuestions" onChange={this.handleInputChange}>
+        <select name="noOfQuestions" value = {this.state.noOfQuestions} onChange={this.handleInputChange}>
           <option value="12">12</option>
           <option value="18">18</option>
           <option value="24">24</option>
