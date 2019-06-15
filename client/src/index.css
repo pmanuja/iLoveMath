@@ -28,26 +28,33 @@ code {
   margin-bottom: 10px;
   width: 30%;
   display: table;
-  border-collapse: separate;
-  border-spacing: 2px;
-  border-color: grey;
   font-size: 140%;
   line-height: 23px;
   letter-spacing: 2px;
   font-family: Verdana,Geneva,Arial,Helvetica,sans-serif,Arial;
   text-align: center;
 }
-tr{
+/* tr{
   line-height: 23px;
+
 
 }
 td {
     display: table-cell;
     vertical-align: inherit;
 
-}
+} */
 
 .lastRow{
-  border-bottom:2px solid #000;
-  width:70%;
+  border-bottom:2px solid black;
+  margin-left: 30px;
+  width:200%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  margin-left:25%;
+  /* width:600px; */
 }
