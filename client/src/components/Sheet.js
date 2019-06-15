@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import SheetGenerator from './SheetGenerator.js'
 
 class Sheet extends Component {
   constructor(props){
@@ -9,13 +10,8 @@ class Sheet extends Component {
   }
   render(){
     return (
-
-      <div>{this.props.data.map((element, index) => {
-        return (<div className = "problem" key = {index}> {element[0]}  {this.props.operation}  {element[1]} = </div>)
-
-      })}</div>
+      <SheetGenerator data = {this.props.data} operation = {this.props.operation}/>
     );
-
   }
 }
 
