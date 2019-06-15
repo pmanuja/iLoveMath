@@ -11,9 +11,9 @@ class SheetGenerator extends Component {
                 <tbody>
                   <tr><td>{index + 1})</td><td></td><td>{element[1]}</td></tr>
                   <tr><td></td><td>{this.props.operation}</td><td>{element[0]}</td></tr>
-                  <hr className="lastRow"/>
                 </tbody>
               </table>
+                <hr className="lastRow"/>
               <br/>
               <br/>
               </div>
@@ -26,9 +26,9 @@ class SheetGenerator extends Component {
                 <tbody>
                   <tr><td>{index + 1})</td><td></td><td>{element[0]}</td></tr>
                   <tr><td></td><td>{this.props.operation}</td><td>{element[1]}</td></tr>
-                  <hr className="lastRow"/>
                 </tbody>
               </table>
+                <hr className="lastRow"/>
               <br/>
               <br/>
 

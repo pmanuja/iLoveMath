@@ -34,21 +34,11 @@ code {
   font-family: Verdana,Geneva,Arial,Helvetica,sans-serif,Arial;
   text-align: center;
 }
-/* tr{
-  line-height: 23px;
-
-
-}
-td {
-    display: table-cell;
-    vertical-align: inherit;
-
-} */
 
 .lastRow{
   border-bottom:2px solid black;
-  margin-left: 30px;
-  width:200%;
+  margin-left: 50px;
+  width:80%;
 }
 
 .grid-container {

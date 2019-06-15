@@ -8,7 +8,8 @@ class App extends Component {
 state = {
     data:[],
     operation : "",
-    show: false
+    show: false,
+    viewSheet : false
   };
 
 /*
@@ -80,14 +81,19 @@ toggleShow = () => {
     show : !this.state.show
   });
 }
+toggleViewSheet =() => {
+  this.setState({
+    viewSheet : !this.state.viewSheet
+  });
+}
 
 render() {
   return (
     <div className="App">
     <h1>Math Sheet Generator </h1>
     <Form toggleShow = {this.toggleShow} createSheet = {this.createSheet} />
-    {this.state.show ? <Options/> : ""}
-    <Sheet data = {this.state.data} operation = {this.state.operation}/>
+    {this.state.show ? <Options toggleViewSheet = {this.toggleViewSheet} /> : ""}
+    {this.state.viewSheet ? <Sheet data = {this.state.data} operation = {this.state.operation}/> : "" }
 
     </div>
   );
