@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import Form from './components/Form.js'
 import Sheet from './components/Sheet.js'
+import Options from './components/Options.js'
 
 class App extends Component {
 state = {
     data:[],
-    operation : ""
+    operation : "",
+    show: false
   };
 
 /*
@@ -73,11 +75,18 @@ createSheet = (params) => {
   console.log(arr3[1]);
 }
 
+toggleShow = () => {
+  this.setState({
+    show : !this.state.show
+  });
+}
+
 render() {
   return (
     <div className="App">
     <h1>Math Sheet Generator </h1>
-    <Form createSheet = {this.createSheet} />
+    <Form toggleShow = {this.toggleShow} createSheet = {this.createSheet} />
+    {this.state.show ? <Options/> : ""}
     <Sheet data = {this.state.data} operation = {this.state.operation}/>
 
     </div>
