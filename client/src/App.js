@@ -88,7 +88,7 @@ show = () => {
 
 
 genPDF = () =>{
-  let pdf,page_section,HTML_Width,HTML_Height,top_left_margin,PDF_Width,PDF_Height,canvas_image_width,canvas_image_height;
+  let page_section,HTML_Width,HTML_Height,top_left_margin,PDF_Width,PDF_Height,canvas_image_width,canvas_image_height;
    page_section = document.querySelector('#sheetdata');
    HTML_Width = page_section.clientWidth;
    HTML_Height = page_section.clientHeight;
@@ -97,23 +97,29 @@ genPDF = () =>{
    PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
    canvas_image_width = HTML_Width;
    canvas_image_height = HTML_Height;
-   console.log(canvas_image_width , canvas_image_height);
+   console.log(`canvas_image_width ${canvas_image_width} , canvas_image_height ${canvas_image_height}`);
 
-   let totalPDFPages = Math.ceil(HTML_Height/PDF_Height)-1;
-   console.log(`total pages ${totalPDFPages}`);
+   this.createPDF(PDF_Width, PDF_Height,top_left_margin,HTML_Width, HTML_Height,canvas_image_width,canvas_image_height);
+
+}
+
+createPDF = (PDF_Width, PDF_Height,top_left_margin,HTML_Width, HTML_Height,canvas_image_width,canvas_image_height) => {
+
+  let totalPDFPages = Math.ceil(HTML_Height/PDF_Height)-1;
+  console.log(`total pages ${totalPDFPages}`);
 
   html2canvas(document.querySelector('#sheetdata'),{ allowTaint: true }).then(canvas => {
   canvas.getContext('2d');
   console.log(canvas.height+"  "+canvas.width);
   const imgData = canvas.toDataURL('image/png',1.0);
-  pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+  let pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
   pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, HTML_Width, HTML_Height);
   for (var i = 1; i <= totalPDFPages; i++) {
-   pdf.addPage(PDF_Width, PDF_Height);
-   pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
-   }
+     pdf.addPage(PDF_Width, PDF_Height);
+     pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
+  }
   pdf.save("newSheet.pdf");
-});
+  });
 
 }
 
