@@ -8,7 +8,7 @@ class Options extends Component {
       <div>
 
         <button onClick={this.props.genPDF}>Download</button>
-        <button>Solve Online </button>
+        <button onClick={this.props.solveOnline}>Solve Online </button>
       </div>
     );
   }

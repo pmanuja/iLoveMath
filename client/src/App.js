@@ -3,6 +3,7 @@ import './App.css';
 import Form from './components/Form.js'
 import Sheet from './components/Sheet.js'
 import Options from './components/Options.js'
+import SolveOnline from './components/SolveOnline.js'
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -95,15 +96,22 @@ genPDF = () =>{
 
 }
 
+solveOnline = () => {
+  console.log("solve this sheet online");
+  let div1 = document.querySelector('#sheetdata');
+  let div2 = document.querySelector('#interactivePDF');
+   div2.innerHTML = div1.innerHTML;
+
+}
 
 render() {
   return (
     <div className="App">
     <h1>Math Sheet Generator </h1>
     <Form show = {this.show} createSheet = {this.createSheet} />
-    {this.state.show ? <Options genPDF = {this.genPDF} /> : ""}
+    {this.state.show ? <Options genPDF = {this.genPDF} solveOnline= {this.solveOnline}/> : ""}
     <Sheet data = {this.state.data} operation = {this.state.operation}/>
-
+    <SolveOnline />
 
     </div>
   );
