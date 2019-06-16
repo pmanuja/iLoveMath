@@ -22,7 +22,7 @@ handleInputChange =(e) =>{
 handleSubmit = (e) =>{
   console.log("clicked on submit");
   e.preventDefault();
-  this.props.toggleShow();
+  this.props.show();
   this.props.createSheet(this.state);
   this.clearform();
 }

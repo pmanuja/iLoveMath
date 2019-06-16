@@ -79,18 +79,18 @@ createSheet = (params) => {
   console.log(arr3[1]);
 }
 
-toggleShow = () => {
+show = () => {
   this.setState({
     show : true
   });
 }
-toggleViewSheet =() => {
+viewSheet =() => {
   this.setState({
     viewSheet : true
   });
 }
 
-print = () =>{
+genPDF = () =>{
   html2canvas(document.querySelector('#sheetdata')).then(canvas => {
   const imgData = canvas.toDataURL('image/png');
   const pdf = new jsPDF('p', 'mm',[1000,800]);
@@ -105,8 +105,8 @@ render() {
   return (
     <div className="App">
     <h1>Math Sheet Generator </h1>
-    <Form toggleShow = {this.toggleShow} createSheet = {this.createSheet} />
-    {this.state.show ? <Options print = {this.print} toggleViewSheet = {this.toggleViewSheet} /> : ""}
+    <Form show = {this.show} createSheet = {this.createSheet} />
+    {this.state.show ? <Options genPDF = {this.genPDF} viewSheet = {this.viewSheet} /> : ""}
     {this.state.viewSheet ? <Sheet data = {this.state.data} operation = {this.state.operation}/> : "" }
 
     </div>
