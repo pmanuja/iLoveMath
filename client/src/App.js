@@ -11,8 +11,7 @@ class App extends Component {
 state = {
     data:[],
     operation : "",
-    show: false,
-    viewSheet : false
+    show: false
   };
 
 /*
@@ -84,18 +83,14 @@ show = () => {
     show : true
   });
 }
-viewSheet =() => {
-  this.setState({
-    viewSheet : true
-  });
-}
+
 
 genPDF = () =>{
   html2canvas(document.querySelector('#sheetdata')).then(canvas => {
   const imgData = canvas.toDataURL('image/png');
   const pdf = new jsPDF('p', 'mm',[1000,800]);
   pdf.addImage(imgData, 'JPEG', 0, 0);
-  pdf.save("download.pdf");
+  pdf.save("newSheet.pdf");
 });
 
 }
@@ -106,8 +101,9 @@ render() {
     <div className="App">
     <h1>Math Sheet Generator </h1>
     <Form show = {this.show} createSheet = {this.createSheet} />
-    {this.state.show ? <Options genPDF = {this.genPDF} viewSheet = {this.viewSheet} /> : ""}
-    {this.state.viewSheet ? <Sheet data = {this.state.data} operation = {this.state.operation}/> : "" }
+    {this.state.show ? <Options genPDF = {this.genPDF} /> : ""}
+    <Sheet data = {this.state.data} operation = {this.state.operation}/>
+
 
     </div>
   );
