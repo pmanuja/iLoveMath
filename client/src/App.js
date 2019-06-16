@@ -12,7 +12,8 @@ class App extends Component {
 state = {
     data:[],
     operation : "",
-    show: false
+    show: false,
+    height:""
   };
 
 /*
@@ -87,10 +88,30 @@ show = () => {
 
 
 genPDF = () =>{
-  html2canvas(document.querySelector('#sheetdata')).then(canvas => {
-  const imgData = canvas.toDataURL('image/png');
-  const pdf = new jsPDF('p', 'mm',[1000,800]);
-  pdf.addImage(imgData, 'JPEG', 0, 0);
+  let pdf,page_section,HTML_Width,HTML_Height,top_left_margin,PDF_Width,PDF_Height,canvas_image_width,canvas_image_height;
+   page_section = document.querySelector('#sheetdata');
+   HTML_Width = page_section.clientWidth;
+   HTML_Height = page_section.clientHeight;
+   top_left_margin = 15;
+   PDF_Width = HTML_Width + (top_left_margin * 2);
+   PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+   canvas_image_width = HTML_Width;
+   canvas_image_height = HTML_Height;
+   console.log(canvas_image_width , canvas_image_height);
+
+   let totalPDFPages = Math.ceil(HTML_Height/PDF_Height)-1;
+   console.log(`total pages ${totalPDFPages}`);
+
+  html2canvas(document.querySelector('#sheetdata'),{ allowTaint: true }).then(canvas => {
+  canvas.getContext('2d');
+  console.log(canvas.height+"  "+canvas.width);
+  const imgData = canvas.toDataURL('image/png',1.0);
+  pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+  pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, HTML_Width, HTML_Height);
+  for (var i = 1; i <= totalPDFPages; i++) {
+   pdf.addPage(PDF_Width, PDF_Height);
+   pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
+   }
   pdf.save("newSheet.pdf");
 });
 
@@ -103,6 +124,7 @@ solveOnline = () => {
    div2.innerHTML = div1.innerHTML;
 
 }
+
 
 render() {
   return (

@@ -28,16 +28,16 @@ code {
   margin-bottom: 10px;
   width: 30%;
   display: table;
-  font-size: 100%;
-  line-height: 20px;
+  font-size: 140%;
+  line-height: 23px;
   letter-spacing: 2px;
   font-family: Verdana,Geneva,Arial,Helvetica,sans-serif,Arial;
   text-align: center;
 }
 
 .lastRow{
-  border-bottom:1px solid black;
-  margin-left: 40px;
+  border-bottom:2px solid black;
+  margin-left: 50px;
   width:80%;
 }
 
@@ -46,5 +46,5 @@ code {
   grid-template-columns: auto auto auto;
   padding: 10px;
   margin-left:25%;
-  width:500px;
+  width:600px;
 }
