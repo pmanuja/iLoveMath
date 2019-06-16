@@ -7,6 +7,7 @@ class Options extends Component {
     return (
       <ul>
         <li onClick ={this.props.toggleViewSheet} >View Sheet </li>
+        <li><button onClick={this.props.print}>print</button></li>
         <li> Solve Online </li>
       </ul>
     );

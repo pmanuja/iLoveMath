@@ -10,7 +10,21 @@ class Sheet extends Component {
   }
   render(){
     return (
-      <SheetGenerator data = {this.props.data} operation = {this.props.operation}/>
+        <div id="sheetdata" className = "grid-container">{this.props.data.map((element, index) => {
+            return (
+                <SheetGenerator
+                element1 = {element[0]}
+                element2 = {element[1]}
+                key = {index}
+                index = {index}
+                data = {this.props.data}
+                operation = {this.props.operation}/>
+            )
+
+        })}
+        </div>
+
+
     );
   }
 }

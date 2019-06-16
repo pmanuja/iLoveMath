@@ -3,6 +3,9 @@ import './App.css';
 import Form from './components/Form.js'
 import Sheet from './components/Sheet.js'
 import Options from './components/Options.js'
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
 
 class App extends Component {
 state = {
@@ -78,21 +81,32 @@ createSheet = (params) => {
 
 toggleShow = () => {
   this.setState({
-    show : !this.state.show
+    show : true
   });
 }
 toggleViewSheet =() => {
   this.setState({
-    viewSheet : !this.state.viewSheet
+    viewSheet : true
   });
 }
+
+print = () =>{
+  html2canvas(document.querySelector('#sheetdata')).then(canvas => {
+  const imgData = canvas.toDataURL('image/png');
+  const pdf = new jsPDF('p', 'mm',[1000,800]);
+  pdf.addImage(imgData, 'JPEG', 0, 0);
+  pdf.save("download.pdf");
+});
+
+}
+
 
 render() {
   return (
     <div className="App">
     <h1>Math Sheet Generator </h1>
     <Form toggleShow = {this.toggleShow} createSheet = {this.createSheet} />
-    {this.state.show ? <Options toggleViewSheet = {this.toggleViewSheet} /> : ""}
+    {this.state.show ? <Options print = {this.print} toggleViewSheet = {this.toggleViewSheet} /> : ""}
     {this.state.viewSheet ? <Sheet data = {this.state.data} operation = {this.state.operation}/> : "" }
 
     </div>
