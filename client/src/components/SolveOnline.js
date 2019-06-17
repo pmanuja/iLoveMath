@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import SheetGenerator from './SheetGenerator.js'
+import InteractiveSheetGenerator from './InteractiveSheetGenerator.js'
 
 class SolveOnline extends Component {
 
@@ -7,7 +7,7 @@ class SolveOnline extends Component {
     return (
       <div id="interactivePDF" className = "interactive-grid-container">{this.props.data.map((element, index) => {
           return (
-              <SheetGenerator
+              <InteractiveSheetGenerator
               element1 = {element[0]}
               element2 = {element[1]}
               key = {index}

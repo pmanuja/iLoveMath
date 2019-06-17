@@ -143,7 +143,6 @@ render() {
     {this.state.show ? <Options genPDF = {this.genPDF} solveOnline= {this.solveOnline}/> : ""}
     {this.state.viewSheet?<Sheet data = {this.state.data} operation = {this.state.operation}/> : <SolveOnline data = {this.state.data} operation = {this.state.operation}/>}
 
-
     </div>
   );
 }
