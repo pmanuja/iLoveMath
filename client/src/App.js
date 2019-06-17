@@ -10,13 +10,14 @@ import html2canvas from 'html2canvas';
 
 class App extends Component {
 state = {
+  testData:"",
     data:[],
     operation : "",
     show: false,
     viewSheet:true
   };
 
-/*
+
 // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
 callBackendAPI = () => {
   fetch('http://localhost:3000/express_backend')
@@ -24,7 +25,7 @@ callBackendAPI = () => {
       console.log(response);
       return response.json();
     }).then(json => this.setState({
-      data: json.express
+      testData: json.express
     }),
     err => console.log(err))
 };
@@ -35,7 +36,7 @@ componentDidMount() {
 
 }
 
-*/
+
 generateRandomNumbersArray(min, max, count){
   console.log(min , max);
 let randomArr = [];
@@ -147,6 +148,7 @@ render() {
   return (
     <div className="App">
     <h1>Math Sheet Generator </h1>
+    <h2>{this.state.testData}</h2>
     <Form show = {this.show} createSheet = {this.createSheet} />
     {this.state.show ? <Options genPDF = {this.genPDF} solveOnline= {this.solveOnline} reset={this.reset}/> : ""}
     {this.state.viewSheet?<Sheet data = {this.state.data} operation = {this.state.operation}/> : <SolveOnline data = {this.state.data} operation = {this.state.operation}/>}
