@@ -13,7 +13,7 @@ state = {
     data:[],
     operation : "",
     show: false,
-    height:""
+    viewSheet:true
   };
 
 /*
@@ -125,12 +125,15 @@ createPDF = (PDF_Width, PDF_Height,top_left_margin,HTML_Width, HTML_Height,canva
 
 solveOnline = () => {
   console.log("solve this sheet online");
-  let div1 = document.querySelector('#sheetdata');
-  let div2 = document.querySelector('#interactivePDF');
-   div2.innerHTML = div1.innerHTML;
+  this.setState({
+    viewSheet : false
+  });
+
+  // let div1 = document.querySelector('#sheetdata');
+  // let div2 = document.querySelector('#interactivePDF');
+  //  div2.innerHTML = div1.innerHTML;
 
 }
-
 
 render() {
   return (
@@ -138,8 +141,8 @@ render() {
     <h1>Math Sheet Generator </h1>
     <Form show = {this.show} createSheet = {this.createSheet} />
     {this.state.show ? <Options genPDF = {this.genPDF} solveOnline= {this.solveOnline}/> : ""}
-    <Sheet data = {this.state.data} operation = {this.state.operation}/>
-    <SolveOnline />
+    {this.state.viewSheet?<Sheet data = {this.state.data} operation = {this.state.operation}/> : <SolveOnline data = {this.state.data} operation = {this.state.operation}/>}
+
 
     </div>
   );
