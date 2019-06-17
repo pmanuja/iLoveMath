@@ -33,6 +33,7 @@ clearform = () =>
     level:"1",
     operation:"+"
   });
+
 }
 
 render(){

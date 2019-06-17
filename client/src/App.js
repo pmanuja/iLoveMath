@@ -135,12 +135,20 @@ solveOnline = () => {
 
 }
 
+reset = () => {
+  this.setState({
+    data:[],
+    show : false,
+    viewSheet : true
+  });
+}
+
 render() {
   return (
     <div className="App">
     <h1>Math Sheet Generator </h1>
     <Form show = {this.show} createSheet = {this.createSheet} />
-    {this.state.show ? <Options genPDF = {this.genPDF} solveOnline= {this.solveOnline}/> : ""}
+    {this.state.show ? <Options genPDF = {this.genPDF} solveOnline= {this.solveOnline} reset={this.reset}/> : ""}
     {this.state.viewSheet?<Sheet data = {this.state.data} operation = {this.state.operation}/> : <SolveOnline data = {this.state.data} operation = {this.state.operation}/>}
 
     </div>
