@@ -17,10 +17,26 @@ state = {
     operation : "",
     showOptions: false,
     viewSheet:true,
-    saveProgress:false
+    saveProgress:false,
+    isSignUpOpen:false,
+    isLogInOpen:true
   };
 
+showSignUpBox =() =>{
+  this.setState({
+    isSignUpOpen :true,
+    isLogInOpen :false
 
+  });
+}
+
+showLogInBox =() =>{
+  this.setState({
+    isSignUpOpen :false,
+    isLogInOpen : true
+
+  });
+}
 // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
 callBackendAPI = () => {
   fetch('http://localhost:3000/express_backend')
@@ -162,23 +178,20 @@ render() {
     {this.state.saveProgress ?
       <div className ="root-container-auth">
         <div className="box-controller-auth">
-          <div className="controller-auth">
+          <h3>Please Sign up or Log In to save your work</h3>
+          <div className="controller-auth" onClick={this.showLogInBox}>
             Login
           </div>
-          <div className="controller-auth">
+          <div className="controller-auth" onClick={this.showSignUpBox}>
             Sign Up
           </div>
         </div>
-
         <div className ="box-container-auth">
-          <NewUser/>
-          <LogIn/>
+          {this.state.isSignUpOpen? <NewUser/>:""}
+          {this.state.isLogInOpen?<LogIn/> : ""}
         </div>
       </div>
-
-    : ""}
-
-
+      : ""}
 
     <Form showOptions = {this.showOptions} createSheet = {this.createSheet} />
     {this.state.showOptions? <Options genPDF = {this.genPDF} solveOnline= {this.solveOnline} reset={this.reset}/> : ""}

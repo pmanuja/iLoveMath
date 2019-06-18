@@ -108,7 +108,6 @@ code {
 }
 
 .inner-container-auth{
-  visibility: hidden;
   transition: visibility 0.2s ease-out;
 }
 
