@@ -7,6 +7,7 @@ import SolveOnline from './components/SolveOnline.js'
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import NewUser from './components/NewUser.js';
+import LogIn from './components/LogIn.js';
 
 
 class App extends Component {
@@ -14,8 +15,9 @@ state = {
   testData:"",
     data:[],
     operation : "",
-    show: false,
-    viewSheet:true
+    showOptions: false,
+    viewSheet:true,
+    saveProgress:false
   };
 
 
@@ -82,12 +84,18 @@ createSheet = (params) => {
   console.log(arr3[1]);
 }
 
-show = () => {
+showOptions = () => {
   this.setState({
-    show : true
+    showOptions : true
   });
 }
 
+saveMyProgress = () =>{
+  console.log('u clicked save my progress');
+  this.setState({
+    saveProgress:true
+  });
+}
 
 genPDF = () =>{
   let page_section,HTML_Width,HTML_Height,top_left_margin,PDF_Width,PDF_Height,canvas_image_width,canvas_image_height;
@@ -128,7 +136,8 @@ createPDF = (PDF_Width, PDF_Height,top_left_margin,HTML_Width, HTML_Height,canva
 solveOnline = () => {
   console.log("solve this sheet online");
   this.setState({
-    viewSheet : false
+    viewSheet : false,
+    showOptions:false
   });
 
   // let div1 = document.querySelector('#sheetdata');
@@ -140,7 +149,7 @@ solveOnline = () => {
 reset = () => {
   this.setState({
     data:[],
-    show : false,
+    showOptions : false,
     viewSheet : true
   });
 }
@@ -150,10 +159,30 @@ render() {
     <div className="App">
     <h1>Math Sheet Generator </h1>
     <h2>{this.state.testData}</h2>
-    <NewUser/>
-    <Form show = {this.show} createSheet = {this.createSheet} />
-    {this.state.show ? <Options genPDF = {this.genPDF} solveOnline= {this.solveOnline} reset={this.reset}/> : ""}
-    {this.state.viewSheet?<Sheet data = {this.state.data} operation = {this.state.operation}/> : <SolveOnline data = {this.state.data} operation = {this.state.operation}/>}
+    {this.state.saveProgress ?
+      <div className ="root-container-auth">
+        <div className="box-controller-auth">
+          <div className="controller-auth">
+            Login
+          </div>
+          <div className="controller-auth">
+            Sign Up
+          </div>
+        </div>
+
+        <div className ="box-container-auth">
+          <NewUser/>
+          <LogIn/>
+        </div>
+      </div>
+
+    : ""}
+
+
+
+    <Form showOptions = {this.showOptions} createSheet = {this.createSheet} />
+    {this.state.showOptions? <Options genPDF = {this.genPDF} solveOnline= {this.solveOnline} reset={this.reset}/> : ""}
+    {this.state.viewSheet?<Sheet data = {this.state.data} operation = {this.state.operation}/> : <SolveOnline data = {this.state.data} operation = {this.state.operation}  saveMyProgress={this.saveMyProgress} reset={this.reset} />}
 
     </div>
   );

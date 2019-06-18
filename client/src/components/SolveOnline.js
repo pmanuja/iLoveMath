@@ -5,6 +5,12 @@ class SolveOnline extends Component {
 
   render(){
     return (
+      <div>
+        <div>
+        <button onClick={this.props.saveMyProgress}>Save my progress</button>
+        <button onClick={this.props.reset}>Reset</button>
+        </div>
+
       <div id="interactivePDF" className = "interactive-grid-container">{this.props.data.map((element, index) => {
           return (
               <InteractiveSheetGenerator
@@ -17,6 +23,7 @@ class SolveOnline extends Component {
           )
 
       })}
+      </div>
       </div>
     );
   }

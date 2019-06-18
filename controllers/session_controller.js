@@ -18,6 +18,7 @@ router.delete('/', (req, res)=>{
 
 router.post('/', (req, res)=>{
     User.findOne({username:req.body.username}, (err, foundUser)=>{
+      if(foundUser){
         if(bcrypt.compareSync(req.body.password, foundUser.password)){
             req.session.currentUser = foundUser;
             res.status(201).json({
@@ -30,6 +31,13 @@ router.post('/', (req, res)=>{
                 message:'login failed'
             });
         }
+      }// end if
+      else{
+        res.status(401).json({
+            status:401,
+            message:'login failed - user not found'
+        });
+      }
     });
 })
 

@@ -56,3 +56,83 @@ code {
   margin:0 35%;
   width:600px;
 }
+
+/*  user auth - login and sign up*/
+.root-container-auth{
+  width:30%;
+  /* height:20%; */
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid red;
+}
+.box-controller{
+  visibility: visible;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 24em;
+  min-width:21em;
+  height: 35px;
+  box-shadow: 0px 0px 20px 0px rgba(15,15,15,0.2);
+  margin-bottom: 30px;
+  align-items: center;
+  transition:visibility 0.5s ease-out;
+}
+
+.box-container-auth{
+  display: flex;
+  flex-direction: column;
+  max-width:24em;
+  min-width:21em;
+  /* height: 35px; */
+  box-shadow: 0px 0px 20px 0px rgba(15,15,15,0.2);
+  border-radius: 6px;
+  padding: 24px;
+  /* margin-bottom: 30px; */
+  /* align-items: center; */
+
+
+}
+.controller-auth{
+  flex:1;
+  text-align: center;
+  height: 100%;
+  line-height: 2;
+  cursor: pointer;
+}
+
+.selected-controller-auth{
+  transition:border 0.5s ease-out;
+  border-bottom: 2px solid blue;
+}
+
+.inner-container-auth{
+  visibility: hidden;
+  transition: visibility 0.2s ease-out;
+}
+
+.inner-container-auth .show{
+  visibility: visible;
+}
+
+.auth-header{
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 15px;
+  font-size: 22px;
+  border-bottom: 2px solid blue;
+}
+
+.box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input-group{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

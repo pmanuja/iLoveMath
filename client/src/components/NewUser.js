@@ -27,6 +27,8 @@ createUser =(e) =>{
     // whatever you want to do with the json data here
     console.log("josoned item", jsonedItem);
   }).catch(err => console.log(err))
+
+  this.clearForm();
 }
 
 handleChange = (e) => {
@@ -36,14 +38,29 @@ handleChange = (e) => {
   });
 }
 
+clearForm=()=>{
+  this.setState({
+    username:"",
+    password:""
+  });
+}
+
 render(){
  return (
-   <div>
+   <div className="inner-container-auth">
    <h2>Sign Up</h2>
-    <form className="form" onSubmit={this.createUser}>
-          <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
-          <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
-          <input type="submit" value="SignUp"/>
+    <form className="box" onSubmit={this.createUser}>
+      <div className="input-group">
+        <label htmlFor="username">username</label>
+        <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
+      </div>
+      <div className="input-group">
+        <label htmlFor="password">password</label>
+        <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
+      </div>
+      <div className="input-group">
+        <input type="submit" value="SignUp"/>
+      </div>
     </form>
    </div>
  );
