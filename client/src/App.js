@@ -6,6 +6,7 @@ import Options from './components/Options.js'
 import SolveOnline from './components/SolveOnline.js'
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import NewUser from './components/NewUser.js';
 
 
 class App extends Component {
@@ -149,6 +150,7 @@ render() {
     <div className="App">
     <h1>Math Sheet Generator </h1>
     <h2>{this.state.testData}</h2>
+    <NewUser/>
     <Form show = {this.show} createSheet = {this.createSheet} />
     {this.state.show ? <Options genPDF = {this.genPDF} solveOnline= {this.solveOnline} reset={this.reset}/> : ""}
     {this.state.viewSheet?<Sheet data = {this.state.data} operation = {this.state.operation}/> : <SolveOnline data = {this.state.data} operation = {this.state.operation}/>}
