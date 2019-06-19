@@ -5,10 +5,10 @@ class Options extends Component {
 
   render(){
     return (
-      <div>
-        <button onClick={this.props.genPDF}>Download</button>
-        <button onClick={this.props.solveOnline}>Solve Online</button>
-        <button onClick={this.props.reset}>Reset</button>
+      <div className="options-div">
+        <button className="option-btn" onClick={this.props.genPDF}>Download</button>
+        <button className="option-btn" onClick={this.props.solveOnline}>Solve Online</button>
+        <button className="option-btn" onClick={this.props.reset}>Reset</button>
       </div>
     );
   }

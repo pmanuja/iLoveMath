@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 
 
 class SheetGenerator extends Component {
-  
+
 
   render(){
 
     return (
-      <div>
+      <div className="sheet-container">
         {this.props.element1 < this.props.element2
           ?
             <div className = "qTable">

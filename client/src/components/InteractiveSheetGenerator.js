@@ -60,7 +60,7 @@ class InteractiveSheetGenerator extends Component {
                 </tbody>
               </table>
                 <hr className="lastRow"/>
-                <input type="text" value={this.state.value} onChange={this.handleChange}/>
+                <input className="login-input answer-box" type="text" value={this.state.value} onChange={this.handleChange}/>
                   { this.state.correctAns ? <label htmlFor="img"><img src="/checkmark.png" alt="" />
                     </label>
                     : [(this.state.remark ? <label htmlFor="img"><img src="/wrong.jpeg" alt="" /></label>
@@ -80,7 +80,7 @@ class InteractiveSheetGenerator extends Component {
                 </tbody>
               </table>
                 <hr className="lastRow"/>
-                <input type="text" value={this.state.value} onChange={this.handleChange}/>
+                <input className="login-input answer-box" type="text" value={this.state.value} onChange={this.handleChange}/>
                   { this.state.correctAns && this.state.remark ? <label htmlFor="img"><img src="/checkmark.png" alt="" />
                     </label>
                     : [(this.state.remark ? <label htmlFor="img"><img src="/wrong.jpeg" alt="" /></label>

@@ -45,19 +45,19 @@ class LoginUser extends Component{
 
   render(){
     return(
-      <div className="inner-container-auth">
+      <div className="inner-container">
       <h2>Log In</h2>
        <form className="box" onSubmit={this.handleLogIn}>
        <div className="input-group">
-         <label htmlFor="username">username</label>
-         <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
+         <label className="login-label" htmlFor="username">Username</label>
+         <input className="login-input" type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
        </div>
        <div className="input-group">
-         <label htmlFor="password">password</label>
-         <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
+         <label className="login-label" htmlFor="password">Password</label>
+         <input className="login-input" type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
        </div>
        <div className="input-group">
-         <input type="submit" value="LogIn"/>
+         <input className="login-btn" type="submit" value="LogIn"/>
        </div>
        </form>
       </div>

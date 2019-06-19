@@ -38,12 +38,12 @@ clearform = () =>
 
 render(){
   return(
-    <div>
+    <div className="form-main-div">
       <form className="form" onSubmit={this.handleSubmit}>
         <div className="form-div">
-          <label htmlFor="operation">Select Operation</label>
+          <label className="login-label" htmlFor="operation">Select Operation</label>
           <br/>
-          <select name="operation" value = {this.state.operation} onChange={this.handleInputChange}>
+          <select className="input-select"  name="operation" value = {this.state.operation} onChange={this.handleInputChange}>
             <option value="+">+</option>
             <option value="-">-</option>
             <option value="x">*</option>
@@ -52,9 +52,9 @@ render(){
           <br/>
         </div>
       <div className="form-div">
-        <label htmlFor="level">Select level</label>
+        <label className="login-label" htmlFor="level">Select level</label>
         <br/>
-        <select name="level" value = {this.state.level} onChange={this.handleInputChange}>
+        <select className="input-select" name="level" value = {this.state.level} onChange={this.handleInputChange}>
           <option value="1" >level 1</option>
           <option value="2">level 2</option>
           <option value="3">level 3</option>
@@ -62,9 +62,9 @@ render(){
         <br/>
       </div>
       <div className="form-div">
-        <label htmlFor="noOfQuestions">Number of questions</label>
+        <label className="login-label" htmlFor="noOfQuestions">Number of questions</label>
         <br/>
-        <select name="noOfQuestions" value = {this.state.noOfQuestions} onChange={this.handleInputChange}>
+        <select className="input-select"  name="noOfQuestions" value = {this.state.noOfQuestions} onChange={this.handleInputChange}>
           <option value="12">12</option>
           <option value="18">18</option>
           <option value="24">24</option>
@@ -74,7 +74,7 @@ render(){
       <div className="form-div">
         <label htmlFor=""></label>
         <br/>
-        <input type="submit" name="" value="submit" />
+        <input className="submit-btn" type="submit" name="" value="submit" />
       </div>
       </form>
     </div>

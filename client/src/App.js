@@ -8,6 +8,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import NewUser from './components/NewUser.js';
 import LogIn from './components/LogIn.js';
+import MainHeader from './components/MainHeader.js';
 
 
 class App extends Component {
@@ -19,7 +20,9 @@ state = {
     viewSheet:true,
     saveProgress:false,
     isSignUpOpen:false,
-    isLogInOpen:true
+    isLogInOpen:true,
+    showForm:false,
+    showMain:true
   };
 
 showSignUpBox =() =>{
@@ -161,6 +164,12 @@ solveOnline = () => {
   //  div2.innerHTML = div1.innerHTML;
 
 }
+showForm = () => {
+  this.setState({
+    showForm : true,
+    showMain:false
+  });
+}
 
 reset = () => {
   this.setState({
@@ -172,9 +181,13 @@ reset = () => {
 
 render() {
   return (
-    <div className="App">
-    <h1>Math Sheet Generator </h1>
-    <h2>{this.state.testData}</h2>
+    <div>
+    <div>
+      {this.state.showMain ? <MainHeader showForm={this.showForm}/> : ""}
+    </div>
+    <div className="app">
+
+    {/*<h2>{this.state.testData}</h2>*/}
     {this.state.saveProgress ?
       <div className ="root-container-auth">
         <div className="box-controller-auth">
@@ -193,10 +206,11 @@ render() {
       </div>
       : ""}
 
-    <Form showOptions = {this.showOptions} createSheet = {this.createSheet} />
+    {this.state.showForm?<Form showOptions = {this.showOptions} createSheet = {this.createSheet} /> :""}
     {this.state.showOptions? <Options genPDF = {this.genPDF} solveOnline= {this.solveOnline} reset={this.reset}/> : ""}
     {this.state.viewSheet?<Sheet data = {this.state.data} operation = {this.state.operation}/> : <SolveOnline data = {this.state.data} operation = {this.state.operation}  saveMyProgress={this.saveMyProgress} reset={this.reset} />}
 
+    </div>
     </div>
   );
 }

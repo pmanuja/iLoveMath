@@ -7,8 +7,8 @@ class SolveOnline extends Component {
     return (
       <div>
         <div>
-        <button onClick={this.props.saveMyProgress}>Save my progress</button>
-        <button onClick={this.props.reset}>Reset</button>
+        <button className="option-btn" onClick={this.props.saveMyProgress}>Save my progress</button>
+        <button className="option-btn" onClick={this.props.reset}>Reset</button>
         </div>
 
       <div id="interactivePDF" className = "interactive-grid-container">{this.props.data.map((element, index) => {
