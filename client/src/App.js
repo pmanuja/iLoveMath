@@ -188,27 +188,31 @@ render() {
     <div className="app">
 
     {/*<h2>{this.state.testData}</h2>*/}
-    {this.state.saveProgress ?
-      <div className ="root-container-auth">
-        <div className="box-controller-auth">
-          <h3>Please Sign up or Log In to save your work</h3>
-          <div className="controller-auth" onClick={this.showLogInBox}>
-            Login
-          </div>
-          <div className="controller-auth" onClick={this.showSignUpBox}>
-            Sign Up
-          </div>
-        </div>
-        <div className ="box-container-auth">
-          {this.state.isSignUpOpen? <NewUser/>:""}
-          {this.state.isLogInOpen?<LogIn/> : ""}
-        </div>
-      </div>
-      : ""}
 
     {this.state.showForm?<Form showOptions = {this.showOptions} createSheet = {this.createSheet} /> :""}
     {this.state.showOptions? <Options genPDF = {this.genPDF} solveOnline= {this.solveOnline} reset={this.reset}/> : ""}
-    {this.state.viewSheet?<Sheet data = {this.state.data} operation = {this.state.operation}/> : <SolveOnline data = {this.state.data} operation = {this.state.operation}  saveMyProgress={this.saveMyProgress} reset={this.reset} />}
+    <div>
+      {this.state.viewSheet?<Sheet data = {this.state.data} operation = {this.state.operation}/> : <SolveOnline data = {this.state.data} operation = {this.state.operation}  saveMyProgress={this.saveMyProgress} reset={this.reset} />}
+      {this.state.saveProgress ?
+        <div className ="root-container-auth">
+          <div className="box-controller-auth">
+            <h3>Please Sign up or Log In to save your work</h3>
+            <div className="controller-auth" onClick={this.showLogInBox}>
+              Login
+            </div>
+            <div className="controller-auth" onClick={this.showSignUpBox}>
+              Sign Up
+            </div>
+          </div>
+          <div className ="box-container-auth">
+            {this.state.isSignUpOpen? <NewUser/>:""}
+            {this.state.isLogInOpen?<LogIn/> : ""}
+          </div>
+        </div>
+        : ""}
+
+    </div>
+
 
     </div>
     </div>

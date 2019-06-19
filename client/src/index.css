@@ -194,14 +194,17 @@ code {
 
 /*  user auth - login and sign up*/
 .root-container-auth{
-  width:30%;
+  width:50%;
   /* height:20%; */
   display:flex;
   justify-content: center;
   flex-direction: column;
   border: 1px solid red;
   margin: auto;
-  z-index: -1;
+  /* margin-top:-70%; */
+margin-top: -80%;
+  background-color: ivory;
+  opacity:0.9;
 }
 .box-controller{
   visibility: visible;
