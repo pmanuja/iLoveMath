@@ -170,6 +170,11 @@ showForm = () => {
     showMain:false
   });
 }
+closeLoginBox =()=>{
+  this.setState({
+    saveProgress: false
+  });
+}
 
 reset = () => {
   this.setState({
@@ -182,39 +187,37 @@ reset = () => {
 render() {
   return (
     <div>
-    <div>
-      {this.state.showMain ? <MainHeader showForm={this.showForm}/> : ""}
-    </div>
-    <div className="app">
+      <div>
+        {this.state.showMain ? <MainHeader showForm={this.showForm}/> : ""}
+      </div>
+      <div className="app">
 
-    {/*<h2>{this.state.testData}</h2>*/}
+      {/*<h2>{this.state.testData}</h2>*/}
 
-    {this.state.showForm?<Form showOptions = {this.showOptions} createSheet = {this.createSheet} /> :""}
-    {this.state.showOptions? <Options genPDF = {this.genPDF} solveOnline= {this.solveOnline} reset={this.reset}/> : ""}
-    <div>
-      {this.state.viewSheet?<Sheet data = {this.state.data} operation = {this.state.operation}/> : <SolveOnline data = {this.state.data} operation = {this.state.operation}  saveMyProgress={this.saveMyProgress} reset={this.reset} />}
-      {this.state.saveProgress ?
-        <div className ="root-container-auth">
-          <div className="box-controller-auth">
-            <h3>Please Sign up or Log In to save your work</h3>
-            <div className="controller-auth" onClick={this.showLogInBox}>
-              Login
+      {this.state.showForm?<Form showOptions = {this.showOptions} createSheet = {this.createSheet} /> : ""}
+      {this.state.showOptions? <Options genPDF = {this.genPDF} solveOnline= {this.solveOnline} reset={this.reset}/> : ""}
+
+        {this.state.viewSheet?<Sheet data = {this.state.data} operation = {this.state.operation}/> : <SolveOnline data = {this.state.data} operation = {this.state.operation}  saveMyProgress={this.saveMyProgress} reset={this.reset} />}
+        {this.state.saveProgress ?
+          <div className ="root-container-auth">
+            <div className="box-controller-auth">
+              <div className="close-div"><button onClick={this.closeLoginBox}>[X]</button></div>
+              <h3>Please Sign up or Log In to save your work</h3>
+              <div className="controller-auth" onClick={this.showLogInBox}>
+                Login
+              </div>
+              <div className="controller-auth" onClick={this.showSignUpBox}>
+                Sign Up
+              </div>
             </div>
-            <div className="controller-auth" onClick={this.showSignUpBox}>
-              Sign Up
+            <div className ="box-container-auth">
+              {this.state.isSignUpOpen? <NewUser/>:""}
+              {this.state.isLogInOpen?<LogIn/> : ""}
             </div>
           </div>
-          <div className ="box-container-auth">
-            {this.state.isSignUpOpen? <NewUser/>:""}
-            {this.state.isLogInOpen?<LogIn/> : ""}
-          </div>
-        </div>
-        : ""}
+          : ""}
 
-    </div>
-
-
-    </div>
+      </div>
     </div>
   );
 }

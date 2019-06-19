@@ -52,7 +52,7 @@ render(){
     <form className="box" onSubmit={this.createUser}>
       <div className="input-group">
         <label className="login-label" htmlFor="username">Username</label>
-        <input className="login-input" type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
+        <input className="login-input" autoComplete="off" type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
       </div>
       <div className="input-group">
         <label className="login-label" htmlFor="password">Password</label>
