@@ -82,12 +82,10 @@ code {
   text-align: center;
   margin: auto;
   /* height:900px; */
-  width:80%;
+  width:60%;
   background-color: beige;
   border: 2px solid coral;
 }
-
-
 
 .form{
   display: flex;
@@ -172,7 +170,10 @@ code {
   margin-left: 50px;
   width:60%;
 }
-
+.check-img{
+  display: block;
+  margin-left: 50px;
+}
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;

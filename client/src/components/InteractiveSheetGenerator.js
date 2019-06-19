@@ -15,6 +15,15 @@ class InteractiveSheetGenerator extends Component {
     if(op === "+"){
       return val1 + val2;
     }
+    if(op === "-"){
+      return val1 - val2;
+    }
+    if(op === "x"){
+      return val1 * val2;
+    }
+    if(op === "÷"){
+      return val1 / val2;
+    }
   }
 
   handleChange = (event) => {
@@ -61,9 +70,9 @@ class InteractiveSheetGenerator extends Component {
               </table>
                 <hr className="lastRow"/>
                 <input className="login-input answer-box" type="text" value={this.state.value} onChange={this.handleChange}/>
-                  { this.state.correctAns ? <label htmlFor="img"><img src="/checkmark.png" alt="" />
+                  { this.state.correctAns ? <label htmlFor="img"><img className="check-img" src="/checkmark.png" alt="" />
                     </label>
-                    : [(this.state.remark ? <label htmlFor="img"><img src="/wrong.jpeg" alt="" /></label>
+                    : [(this.state.remark ? <label htmlFor="img"><img className="check-img" src="/wrong.jpeg" alt="" /></label>
                       : null)
                       ]
                   }
@@ -81,9 +90,9 @@ class InteractiveSheetGenerator extends Component {
               </table>
                 <hr className="lastRow"/>
                 <input className="login-input answer-box" type="text" value={this.state.value} onChange={this.handleChange}/>
-                  { this.state.correctAns && this.state.remark ? <label htmlFor="img"><img src="/checkmark.png" alt="" />
+                  { this.state.correctAns && this.state.remark ? <label htmlFor="img"><img className="check-img" src="/checkmark.png" alt="" />
                     </label>
-                    : [(this.state.remark ? <label htmlFor="img"><img src="/wrong.jpeg" alt="" /></label>
+                    : [(this.state.remark ? <label htmlFor="img"><img className="check-img" src="/wrong.jpeg" alt="" /></label>
                       : null)
                       ]
                   }

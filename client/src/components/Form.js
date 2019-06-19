@@ -46,7 +46,7 @@ render(){
           <select className="input-select"  name="operation" value = {this.state.operation} onChange={this.handleInputChange}>
             <option value="+">+</option>
             <option value="-">-</option>
-            <option value="x">*</option>
+            <option value="x">x</option>
             <option value="÷">÷</option>
           </select>
           <br/>
