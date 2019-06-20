@@ -85,10 +85,11 @@ code {
   color: green;
 }
 
-/* +++++++++main app ++++++ */
+/* +++++++++main app form ++++++ */
 .app{
   text-align: center;
   margin: auto;
+  margin-top: 3%;
   /* height:900px; */
   width:60%;
   background-color: beige;
