@@ -9,6 +9,9 @@ import html2canvas from 'html2canvas';
 import NewUser from './components/NewUser.js';
 import LogIn from './components/LogIn.js';
 import MainHeader from './components/MainHeader.js';
+import WelcomeUser from './components/WelcomeUser.js';
+import { BrowserRouter as Router, Link, NavLink, Redirect, Prompt} from 'react-router-dom';
+import Route from 'react-router-dom/Route';
 
 
 class App extends Component {
@@ -22,7 +25,9 @@ state = {
     isSignUpOpen:false,
     isLogInOpen:true,
     showForm:false,
-    showMain:true
+    showMain:true,
+    isLoggedIn: false,
+    loggedInUserName :""
   };
 
 showSignUpBox =() =>{
@@ -184,9 +189,33 @@ reset = () => {
   });
 }
 
+createUserSession = (username) =>{
+  console.log("set user welcome ", username);
+
+  this.setState({
+    loggedInUserName: username,
+    isLoggedIn : true,
+    saveProgress: false
+  });
+}
+
+logOut = () =>{
+  console.log("log out clicked");
+  this.setState({
+    isLoggedIn : false,
+    showForm:false,
+    showOptions:false,
+    viewSheet:false,
+    showMain : true
+  });
+}
+
 render() {
   return (
     <div>
+      <div>
+        {this.state.isLoggedIn ?<WelcomeUser username={this.state.loggedInUserName} logOut={this.logOut} isLoggedIn={this.state.isLoggedIn}/> :"" }
+      </div>
       <div>
         {this.state.showMain ? <MainHeader showForm={this.showForm}/> : ""}
       </div>
@@ -212,7 +241,7 @@ render() {
             </div>
             <div className ="box-container-auth">
               {this.state.isSignUpOpen? <NewUser/>:""}
-              {this.state.isLogInOpen?<LogIn/> : ""}
+              {this.state.isLogInOpen?<LogIn createUserSession = {this.createUserSession}/> : ""}
             </div>
           </div>
           : ""}

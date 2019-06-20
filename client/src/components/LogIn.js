@@ -11,6 +11,7 @@ class LoginUser extends Component{
     console.log("create a session for user");
     e.preventDefault();
     console.log(this.state.username , this.state.password);
+    let username = this.state.username;
     //post request for creating user session
     fetch('http://localhost:3000/sessions', {
     body: JSON.stringify({"username":this.state.username, "password":this.state.password}),
@@ -20,13 +21,17 @@ class LoginUser extends Component{
       'Content-Type': 'application/json'
     }
   }).then(createdSession => {
+      console.log("username is " , username);
+      this.props.createUserSession(username);
       return createdSession.json()
     }).then(jsonedItem => {
       // whatever you want to do with the json data here
       console.log("session created? - ", jsonedItem);
+
     }).catch(err => console.log(err))
 
     this.clearForm();
+
   }
 
   handleChange = (e) => {
