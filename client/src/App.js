@@ -27,7 +27,8 @@ state = {
     showForm:false,
     showMain:true,
     isLoggedIn: false,
-    loggedInUserName :""
+    loggedInUserName :"",
+    isSolveOnline : false
   };
 
 showSignUpBox =() =>{
@@ -160,6 +161,7 @@ createPDF = (PDF_Width, PDF_Height,top_left_margin,HTML_Width, HTML_Height,canva
 solveOnline = () => {
   console.log("solve this sheet online");
   this.setState({
+    isSolveOnline:true,
     viewSheet : false,
     showOptions:false
   });
@@ -206,7 +208,9 @@ logOut = () =>{
     showForm:false,
     showOptions:false,
     viewSheet:false,
-    showMain : true
+    showMain : true,
+    saveProgress: false,
+    isSolveOnline:true
   });
 }
 
@@ -226,8 +230,15 @@ render() {
       {this.state.showForm?<Form showOptions = {this.showOptions} createSheet = {this.createSheet} /> : ""}
       {this.state.showOptions? <Options genPDF = {this.genPDF} solveOnline= {this.solveOnline} reset={this.reset}/> : ""}
 
-        {this.state.viewSheet?<Sheet data = {this.state.data} operation = {this.state.operation}/> : <SolveOnline data = {this.state.data} operation = {this.state.operation}  saveMyProgress={this.saveMyProgress} reset={this.reset} />}
-        {this.state.saveProgress ?
+      {this.state.viewSheet?
+        <Sheet data = {this.state.data} operation = {this.state.operation}/>
+      : [(this.state.isSolveOnline ? <SolveOnline data = {this.state.data} operation = {this.state.operation}  saveMyProgress={this.saveMyProgress} reset={this.reset} />
+        : null)
+        ]
+      }
+
+
+      {this.state.saveProgress ?
           <div className ="root-container-auth">
             <div className="box-controller-auth">
               <div className="close-div"><button onClick={this.closeLoginBox}>[X]</button></div>

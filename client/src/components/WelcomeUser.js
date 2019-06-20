@@ -11,9 +11,9 @@ class WelcomeUser extends Component {
     return (
        <Router>
         <div className="welcome-user">
-          <ul>
+          <ul className="welcome-nav">
             <li>Welcome, {this.props.username}</li>
-            <li onClick={this.props.logOut}><Link to="/logOut">LogOut</Link></li>
+            <li onClick={this.props.logOut}><Link to="/logOut">Log Out</Link></li>
           </ul>
 
           <Route path="/logOut" exact strict component={MainHeader}/>
