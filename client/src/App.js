@@ -210,7 +210,7 @@ logOut = () =>{
     viewSheet:false,
     showMain : true,
     saveProgress: false,
-    isSolveOnline:true
+    isSolveOnline:false
   });
 }
 
@@ -236,7 +236,7 @@ render() {
         : null)
         ]
       }
-
+      
 
       {this.state.saveProgress ?
           <div className ="root-container-auth">

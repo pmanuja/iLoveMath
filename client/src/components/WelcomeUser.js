@@ -7,12 +7,12 @@ class WelcomeUser extends Component {
 
   render(){
     console.log("is user logged in" , this.props.isLoggedIn);
-    alert(`Welcome, ${this.props.username} your work is saved`);
+    alert(`Welcome, ${(this.props.username).toUpperCase()} ! Your work is saved`);
     return (
        <Router>
         <div className="welcome-user">
           <ul className="welcome-nav">
-            <li>Welcome, {this.props.username}</li>
+            <li>Welcome, {(this.props.username).toUpperCase()}!</li>
             <li onClick={this.props.logOut}><Link to="/logOut">Log Out</Link></li>
           </ul>
 
