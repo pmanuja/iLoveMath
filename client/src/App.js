@@ -48,7 +48,7 @@ showLogInBox =() =>{
 }
 // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
 callBackendAPI = () => {
-  fetch('http://localhost:3000/express_backend')
+  fetch('https://math-sheet-generator.herokuapp.com/express_backend')
     .then(response => {
       console.log(response);
       return response.json();
@@ -193,7 +193,6 @@ reset = () => {
 
 createUserSession = (username) =>{
   console.log("set user welcome ", username);
-
   this.setState({
     loggedInUserName: username,
     isLoggedIn : true,
@@ -203,6 +202,23 @@ createUserSession = (username) =>{
 
 logOut = () =>{
   console.log("log out clicked");
+
+    fetch('/sessions', {
+    body: JSON.stringify({"username":this.state.username, "password":this.state.password}),
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
+    }
+  }).then(sessionDestroyed => {
+      console.log("session destroyed");
+    }).then(jsonedItem => {
+      // whatever you want to do with the json data here
+      console.log("session destroyed? - ", jsonedItem);
+
+    }).catch(err => console.log(err))
+
+
   this.setState({
     isLoggedIn : false,
     showForm:false,
@@ -236,7 +252,10 @@ render() {
         : null)
         ]
       }
-      
+      {this.state.isSolveOnline ?
+        <SolveOnline data = {this.state.data} operation = {this.state.operation}  saveMyProgress={this.saveMyProgress} reset={this.reset} />
+        : null
+      }
 
       {this.state.saveProgress ?
           <div className ="root-container-auth">

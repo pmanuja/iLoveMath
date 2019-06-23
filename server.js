@@ -50,7 +50,7 @@ app.listen(port,() => {
   console.log("express server running on port 3000");
 });
 
-mongoose.connect('mongodb://localhost:27017/math-sheet-generator', {useNewUrlParser:true});
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/math-sheet-generator', {useNewUrlParser:true});
 mongoose.connection.once('open', ()=>{
     console.log('connected to mongo');
 })

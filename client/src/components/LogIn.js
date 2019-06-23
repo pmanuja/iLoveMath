@@ -13,7 +13,7 @@ class LoginUser extends Component{
     console.log(this.state.username , this.state.password);
     let username = this.state.username;
     //post request for creating user session
-    fetch('http://localhost:3000/sessions', {
+    fetch('https://math-sheet-generator.herokuapp.com/sessions', {
     body: JSON.stringify({"username":this.state.username, "password":this.state.password}),
     method: 'POST',
     headers: {

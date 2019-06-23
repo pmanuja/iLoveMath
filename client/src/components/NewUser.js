@@ -14,7 +14,7 @@ createUser =(e) =>{
   e.preventDefault();
   console.log(this.state.username , this.state.password);
   //post request for creating new user in mongo
-  fetch('http://localhost:3000/users', {
+  fetch('https://math-sheet-generator.herokuapp.com/users', {
   body: JSON.stringify({"username":this.state.username, "password":this.state.password}),
   method: 'POST',
   headers: {
