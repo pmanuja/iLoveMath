@@ -203,20 +203,13 @@ createUserSession = (username) =>{
 logOut = () =>{
   console.log("log out clicked");
 
-  fetch('https://math-sheet-generator.herokuapp.com/sessions', {
-  body: JSON.stringify({"username":this.state.username, "password":this.state.password}),
-  method: 'DELETE',
-  headers: {
-    'Accept': 'application/json, text/plain, */*',
-    'Content-Type': 'application/json'
-  }
-  }).then(sessionDestroyed => {
-    console.log("session destroyed");
-  }).then(jsonedItem => {
-    // whatever you want to do with the json data here
-    console.log("session destroyed? - ", jsonedItem);
-
-  }).catch(err => console.log(err))
+  fetch(`https://math-sheet-generator.herokuapp.com/sessions`, {
+    method: 'DELETE'
+  })
+    .then(data => {
+      console.log("session destroyed" , data);
+    })
+    .catch(err => console.log(err))
 
 
   this.setState({
