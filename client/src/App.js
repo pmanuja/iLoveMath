@@ -203,20 +203,20 @@ createUserSession = (username) =>{
 logOut = () =>{
   console.log("log out clicked");
 
-    fetch('/sessions', {
-    body: JSON.stringify({"username":this.state.username, "password":this.state.password}),
-    method: 'DELETE',
-    headers: {
-      'Accept': 'application/json, text/plain, */*',
-      'Content-Type': 'application/json'
-    }
+  fetch('https://math-sheet-generator.herokuapp.com/sessions', {
+  body: JSON.stringify({"username":this.state.username, "password":this.state.password}),
+  method: 'DELETE',
+  headers: {
+    'Accept': 'application/json, text/plain, */*',
+    'Content-Type': 'application/json'
+  }
   }).then(sessionDestroyed => {
-      console.log("session destroyed");
-    }).then(jsonedItem => {
-      // whatever you want to do with the json data here
-      console.log("session destroyed? - ", jsonedItem);
+    console.log("session destroyed");
+  }).then(jsonedItem => {
+    // whatever you want to do with the json data here
+    console.log("session destroyed? - ", jsonedItem);
 
-    }).catch(err => console.log(err))
+  }).catch(err => console.log(err))
 
 
   this.setState({
@@ -252,10 +252,10 @@ render() {
         : null)
         ]
       }
-      {this.state.isSolveOnline ?
+    {/*  {this.state.isSolveOnline ?
         <SolveOnline data = {this.state.data} operation = {this.state.operation}  saveMyProgress={this.saveMyProgress} reset={this.reset} />
         : null
-      }
+      }*/}
 
       {this.state.saveProgress ?
           <div className ="root-container-auth">
