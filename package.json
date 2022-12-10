@@ -21,7 +21,7 @@
   "dependencies": {
     "bcrypt": "latest",
     "ejs": "latest",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-session": "^1.16.2",
     "html2canvas": "^1.0.0-rc.3",
     "jspdf": "^1.5.3",
